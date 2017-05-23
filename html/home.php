@@ -19,7 +19,7 @@ Hello World, This is test for website!!
 <p>View Client:<input id="submit" type="submit" name='client' value="client"> </p>
 <p>View ClientContact:<input id="submit" type="submit" name='client' value="client contact"></p>
 <p>View Order that are due today:<input id="submit" type="submit" name='client' value="order due today"></p>
-<p>Complete Order:<input id="submit" type="submit" name='client' value="complete order"></p>
+<p>View Invoice:<input id="submit" type="submit" name='client' value="view invoice"></p>
 </form>
 </div>
 
