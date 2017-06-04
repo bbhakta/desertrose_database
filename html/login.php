@@ -1,4 +1,4 @@
-<?
+<?php
 /* This is a login.php file and it checkts user data in database */
 /*Gets ther username and password from the index.html file*/
 $iuser = $_POST['user'];
