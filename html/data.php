@@ -1,6 +1,6 @@
 <html>
 <div align ="center">
-<?
+<?php
 
 /* http://www.fpdf.org/en/script/script10.php */
 ob_start();
