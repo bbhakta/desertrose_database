@@ -8,7 +8,8 @@ $ipass = $_POST['pass'];
 /* Need to find a way to hide admin username and password*/
 $ahost = 'localhost';
 $auser = 'root';
-$apassword = 'ramkabir';
+//$apassword = 'ramkabir';
+$apassword = '';
 $database = 'desertrose';
 
 /*Connect to the database using varible prints out error message if database is unavalible */
