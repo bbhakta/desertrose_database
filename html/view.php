@@ -12,7 +12,8 @@ require('C:\xampp\htdocs\fpdf\fpdf.php');
 
 $ahost = 'localhost';
 $auser = 'root';
-$apassword = 'ramkabir';
+//$apassword = 'ramkabir';
+$apassword = '';
 $database = 'desertrose';
 
 /*Connect to the database using varible prints out error message if database is unavalible */
