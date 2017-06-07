@@ -84,7 +84,8 @@ $add = $cal . ", " . $met . ", " . $iml . ", " . $pd . ", " . $pdd . ", " . $ld 
 //admin information for conneting to mysql and slecet database
 $ahost = 'localhost';
 $auser = 'root';
-$apassword = 'ramkabir';
+//$apassword = 'ramkabir';
+$apassword = '';
 $database = 'desertrose';
 
 $connect =  mysql_connect($ahost, $auser, $apassword) 
