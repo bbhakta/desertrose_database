@@ -1,4 +1,4 @@
-<?
+<?php
 /* This is a login.php file and it checkts user data in database */
 /*Gets ther username and password from the index.html file*/
 $iuser = $_POST['user'];
@@ -15,6 +15,8 @@ $database = 'desertrose';
 $connect =  mysql_connect($ahost, $auser, $apassword) 
 	 or die('Could not connect:' . mysql_errno());
 
+
+echo "here";
 /*Specifies which daabase to use*/
 mysql_select_db($database, $connect);
 

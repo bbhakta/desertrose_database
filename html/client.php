@@ -5,10 +5,11 @@
 
 fieldset {
 	width: 600px;
+	display: none;
 }
 
 legend {
-	font-size: 20px;
+	font-size: 16px;
 }
 
 label.field{
@@ -26,13 +27,48 @@ input.textbox-300 {
 fieldset p{
 	clear: both;
 	padding: 5px;
+	
 }
 </style>
+
+<head>
+
+  <title> Enter Information </title>
+
+  <script>
+
+  function showhide(show_name, hide_name)
+  {
+  	var show_div = document.getElementById(show_name);
+  	var hide_div = document.getElementById(hide_name);
+    
+    if (show_div.style.display !== "none" && hide_div.style.display == "block") 
+    {
+        show_div.style.display = "block";
+        hide_div.style.display = "none";
+    }
+
+    else 
+    {
+        show_div.style.display = "none";
+        hide_div.style.display = "block";
+    }
+  }
+
+    
+  </script>
+
+ </head>
 <!--- This is a data it gets user input  for client information and when user hits submit it gives data to the data.php file-- >
 <!--- Html form which get user data -->
-	<form action="data.php" method="post">
+	
+ <body>
+ 	 <form action="data.php" method="post">
 		<!--- This is fieldset for getting user informatin! Need to do more reaserch on this -->
-		<fieldset>
+ 
+		<button id="button" onclick="showhide('button', 'client'); return false;"> Client Information </button>
+
+		<fieldset id="client" >
 			<legend> Enter your information </legend>
 			<p><label class="field" for="Cname">Client First Name:</label> <input type="text" name="cfname"></p>
 			<p><label class="field" for="Lname">Client Last Name:</label> <input type="text" name="clname"></p>
@@ -43,9 +79,11 @@ fieldset p{
 			<p><label class="field" for="Phone">Phone Number:</label> <input type ="text" name="phone"></p>
 			<p><label class="field" for="Email">Email:</label> <input type="email" name ="email"></p>
 			<p><label class="field" for="Lic">Licence Number:</label> <input type="text" name="lnum"></p>
-		</fieldset>
+		
+			<button id="button" onclick="showhide('patient', 'client') ; return false;">Patient Information </button>
+		</fieldset>		
 
-		<fieldset>
+		<fieldset id ="patient">
 			<legend> Enter Patient Information </legend>
 			<p><label class="field" for="Pname">Patient First Name:</label> <input type="text" name="pfname"></p>
 			<p><label class="field" for="Pname">Patient Last Name:</label> <input type="text" name="plname"></p>
@@ -54,78 +92,199 @@ fieldset p{
 	        <p><label class="field" for="male">Male</label> <input type="radio" name="gender" id="male" value="M"></p>
 	        <p><label class="field" for="fmale">Female</label> <input type="radio" name="gender" id="female" value="F"></p>
 			<p><label class="field" for="Phone">Phone Number:</label> <input type ="text" name="pphone"></p>
-			<p><label class="field" for="Email">Email:</label> <input type="email" name ="pemail"></p>
+			<!--- <p><label class="field" for="Email">Email:</label> <input type="email" name ="pemail"></p> -->
+			<button id="button" onclick="showhide('type', 'patient') ; return false;">Order Type </button>
 		</fieldset>
+		
+		<fieldset id="type">
 
-		<fieldset>
-			<legend> Enter Order Information </legend>
+			<legend> Please Choose Your Order Type </legend>
+			<input type="checkbox" id="chk" onclick="showhide('pvs','pvs')" name="pvs" value="pvs" /> PVS Order
+			<hr />
 
-			<legend>Removables</legend>
-				<fieldset>
-					<p><label class="field" for="bite">Bite Splint</label> <input type="checkbox" name="bite" id="bite" value="Bite Splint"></p>
-						<fieldset>
-							<p><label class="field" for="pivot">Pivot</label> <input type="checkbox" name="pivot" id="pivot" value="Pivot"></p>
-							<p><label class="field" for="night">Night Gurad</label> <input type="checkbox" name="night" id="night" value="Night Gurad"></p>
-						</fieldset>
-					<p><label class="field" for="bleach">Bleaching Splints</label> <input type="checkbox" name="bleach" id="bleach" value="Bleaching Splints"></p>
-					<p><label class="field" for="surgical">Surgical Guide</label> <input type="checkbox" name="surgical" id="surgical" value="Surgical Guide"></p>
-				</fieldset>
+			<fieldset id="pvs">
+			<legend>PVS Order</legend>
+				<input type="checkbox" id="chk" onclick="showhide('pcrown','pcrown')" name="pcrown" value="pcrown" /> Crown
+				<hr />
+					<fieldset id="pcrown">
 
-			<legend>Bite Informaiton</legend>
-			<fieldset>
-					<p><label class="field" for="bite">Bite Splint</label> <input type="text" name="bclass"></p>
-					<legend>Desired Occlusion</legend>
-					<p><label class="field" for="ant">Anterior</label> <input type="checkbox" name="ant" id="ant" value="Anterior"></p>
-					<p><label class="field" for="post">Posterior</label> <input type="checkbox" name="post" id="post" value="Posterior"></p>
-					<legend>Margins</legend>
-					<fieldset>
-						<p><label class="field" for="bel">Below lingual Gumline</label> <input type="checkbox" name="bel" id="bel" value="Below lingual Gumline"></p>
-						<p><label class="field" for="ove">Overlapping anteriors</label> <input type="checkbox" name="ove" id="bel" value="Overlapping anteriors"></p>
+					<input type="checkbox" name="pcdia" id="pcdia" value="dia"/> Diagnostic
+					<hr />
+					<input type="checkbox" name="pczir" id="pczir" value="zir"/> Zirconia
+					<hr />
+					<input type="checkbox" name="pcemax" id="pcemax" value="max"/> Emax
+					<hr />
+					<input type="checkbox" name="pcgold" id="pcgold" value="gol"/> Gold
+					<hr />
+					Shade <input type="text" name="pcsha" id="pcsha"/>
+					<hr />
+						
 					</fieldset>
-				</fieldset>
+				<input type="checkbox" id="chk" onclick="showhide('pnight','pnight')" name ="pnight" value="pnight"/> Night Guard
+				<hr />
+					<fieldset id="pnight">
+					
+					<input type="checkbox" name="pnupp" id="pnupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="pnlow" id="pnlow" value="low"/> Lower
+					<hr />
+					<input type="checkbox" name="pnsof" id="pnsof" value="sof"/> Soft
+					<hr />
+					<input type="checkbox" name="pnhar" id="pnhar" value="har"/> Hard
+					<hr />
+					<input type="checkbox" name="pnmay" id="pnmay" value="may"/> May Applience
+					<hr />
+					<input type="checkbox" name="pnocl" id="pnocul" value="ocl"/> Ocllual
+					<hr />						
+					</fieldset>
 
-			<legend>Surgical Guide Requirements</legend>
-			<fieldset>
-				<p><label class="field" for="lab">Lab Form</label> <input type="checkbox" name="lab" id="lab" value="Lab Form"></p>
-				<p><label class="field" for="cbc">CBCT, DICOM Files</label> <input type="checkbox" name="cbc" id="cbc" value="CBCT, DICOM Files"></p>
-				<p><label class="field" for="pro">Proper Measumrents</label> <input type="checkbox" name="pro" id="pro" value="Proper Measurements"></p>
-				<p><label class="field" for="imp">Impressions or Scans (STL)</label> <input type="checkbox" name="imp" id="imp" value="Impressions or Scans (STL)"></p>
+				<input type="checkbox" id="chk" onclick="showhide('palign', 'palign')" name = "palign" value="palign"/> Aligner
+				<hr />
+					<fieldset id="palign">					
+					<input type="checkbox" name="paupp" id="paupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="palow" id="palow" value="low"/> Lower
+					<hr />
+					<input type="checkbox" name="parep" id="parep" value="rep"/> Replacement
+					<hr />						
+					</fieldset>
+
+				<input type="checkbox" id="chk" onclick="showhide('psurg','psurg')" name="psurg" value="psurgi"/> Surgical Guide
+				<hr />
+					<fieldset id="psurg">					
+					<input type="checkbox" name="psimp" id="psimp" value="imp"/> Implant System
+					<hr />
+					Tooth Number <input type="text" name="pstoo" id="too"/>
+					<hr />
+					<input type="checkbox" name="pssle" id="pssle" value="sle"/> Sleeve
+					<hr />						
+					</fieldset>
+
+				<input type="checkbox" id="chk" onclick="showhide('pdent', 'pdent')" name="pdent" value="pdent"/> Denture
+				<hr />
+					<fieldset id="pdent">					
+					<input type="checkbox" name="pdupp" id="pdupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="pdlow" id="pdlow" value="low"/> Lower
+					<hr />
+					Shade <input type="text" name="pdtoo" id="pdtoo"/>
+					<hr />						
+					</fieldset>
+				<input type="checkbox" id="chk" onclick="showhide('ppart','ppart')" name="ppart" value="ppart"/> Partial
+				<hr />
+					<fieldset id="ppart">					
+					<input type="checkbox" name="ppupp" id="ppupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="pplow" id="pplow" value="low"/> Lower
+					<hr />
+					Missing Tooth <input type="text" name="ppmiss" id="miss"/>
+					<hr />
+					Shade <input type="text" name="ppsha" id="ppsha"/>
+					<hr />							
+					</fieldset>
+			</fieldset>
+		
+			<input type="checkbox" id="chk" onclick="showhide('digi', 'digi')" name="digi" value="digi"/> Digital Order
+			<hr />
+
+			<fieldset id="digi">
+			<legend>Digital Order</legend>
+				<input type="checkbox" id="chk" onclick="showhide('dcrown','dcrown')" name="dcrown" value="dcrown" /> Crown
+				<hr />
+					<fieldset id="dcrown">
+
+					<input type="checkbox" name="dcdia" id="dcdia" value="dia"/> Diagnostic
+					<hr />
+					<input type="checkbox" name="dczir" id="dczir" value="zir"/> Zirconia
+					<hr />
+					<input type="checkbox" name="dcemax" id="dcemax" value="max"/> Emax
+					<hr />
+					<input type="checkbox" name="dcgold" id="dcgold" value="gol"/> Gold
+					<hr />
+					Shade <input type="text" name="dcsha" id="dcsha"/>
+					<hr />
+						
+					</fieldset>
+				<input type="checkbox" id="chk" onclick="showhide('dnight','dnight')" name="dnight"value="dnight"/> Night Guard
+				<hr />
+					<fieldset id="dnight">
+					
+					<input type="checkbox" name="dnupp" id="dnupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="dnlow" id="dnlow" value="low"/> Lower
+					<hr />
+					<input type="checkbox" name="dnsof" id="dnsof" value="sof"/> Soft
+					<hr />
+					<input type="checkbox" name="dnhar" id="dnhar" value="har"/> Hard
+					<hr />
+					<input type="checkbox" name="dnmay" id="dnmay" value="may"/> May Applience
+					<hr />
+					<input type="checkbox" name="dnocl" id="dnocul" value="ocl"/> Ocllual
+					<hr />						
+					</fieldset>
+
+				<input type="checkbox" id="chk" onclick="showhide('dalign', 'dalign')" name="dalign" value="dalign"/> Aligner
+				<hr />
+					<fieldset id="dalign">					
+					<input type="checkbox" name="daupp" id="daupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="dalow" id="dalow" value="low"/> Lower
+					<hr />
+					<input type="checkbox" name="darep" id="darep" value="rep"/> Replacement
+					<hr />						
+					</fieldset>
+
+				<input type="checkbox" id="chk" onclick="showhide('dsurg','dsurg')" name="dsurgi" value="dsurgi"/> Surgical Guide
+				<hr />
+					<fieldset id="dsurg">					
+					<input type="checkbox" name="dsimp" id="dsimp" value="imp"/> Implant System
+					<hr />
+					Tooth Number <input type="dstext" name="dstoo" id="too"/>
+					<hr />
+					<input type="checkbox" name="dssle" id="dssle" value="sle"/> Sleeve
+					<hr />						
+					</fieldset>
+					
+				<input type="checkbox" id="chk" onclick="showhide('ddent', 'ddent')" name="ddent" value="ddent"/> Denture
+				<hr />
+					<fieldset id="ddent">					
+					<input type="checkbox" name="ddupp" id="ddupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="ddlow" id="ddlow" value="low"/> Lower
+					<hr />
+					Shade <input type="text" name="ddtoo" id="ddtoo"/>
+					<hr />						
+					</fieldset>
+				<input type="checkbox" id="chk" onclick="showhide('dpart','dpart')" name="dpart" value="dpart"/> Partial
+				<hr />
+					<fieldset id="dpart">					
+					<input type="checkbox" name="dpupp" id="dpupp" value="upp"/> Upper
+					<hr />
+					<input type="checkbox" name="dplow" id="dplow" value="low"/> Lower
+					<hr />
+					Missing Tooth <input type="text" name="dpmiss" id="miss"/>
+					<hr />
+					Shade <input type="text" name="dpsha" id="dpsha"/>
+					<hr />							
+					</fieldset>
 			</fieldset>
 
-			<legend>Additional Information (Surgical Guide) </legend>
-			<fieldset>
-				<p><label class="field" for="cal">Call Doctor</label> <input type="checkbox" name="cal" id="cal" value="Call Doctor"></p>
-				<p><label class="field" for="met">Metal Sleeve</label> <input type="checkbox" name="met" id="met" value="Metal Sleeve"></p>
-				<p><label class="field" for="iml">Implant System</label> <input type="text" name="iml"></p>
-				<p><label class="field" for="pd">Pilot Drill Depth(mm)</label> <input type="text" name="pd"></p>
-				<p><label class="field" for="pdd">Pilot Drill Diameter(mm)</label> <input type="text" name="pdd"></p>
-				<p><label class="field" for="ld">Longest Drill Length</label> <input type="text" name="ld"></p>
-				<p><label class="field" for="sd">Shortest Drill Length</label> <input type="text" name="sd"></p>
-				<p><label class="field" for="dd">Drill Diameter(mm)</label> <input type="text" name="dd"></p>
-			</fieldset>
-
+			
 			<legend>Enter the date you want order to be completed</legend>
 			<!--- Somehow this gets the date, Magic -->
 			<p><input type="date" name="ddate" value="<?php echo date('Y-m-d'); ?>"></p>
-			<!--- 
+			
+			<input type="submit" value ="Enter Data">
 
-				this is test 
+			</fieldset>
 
-			<legend>Bite Informaiton</legend>
-
-			<legend>Indirect Restorations</legend>
-
-
-			<legend>Shade Informaiton</legend>
-
-			<legend>Special Instructions</legend>
-			-->
 		</fieldset>
-
-		<input type="submit" value ="Client Information">
+				
+		
 	</form>
 
 
+</body>
 
 </html>
 
