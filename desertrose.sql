@@ -15,7 +15,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+DROP SCHEMA IF EXISTS desertrose;
+CREATE SCHEMA desertrose;
 
+USE desertrose;
 --
 -- Database: 'desertrose'
 --
@@ -26,7 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table 'client'
 --
 
-CREATE TABLE IF NOT EXISTS `client` (
+CREATE TABLE IF NOT EXISTS client (
   id int(6) NOT NULL AUTO_INCREMENT,
   fname char(10) NOT NULL,
   mname char(7) DEFAULT NULL,
@@ -45,14 +48,6 @@ CREATE TABLE IF NOT EXISTS `client` (
 -- Dumping data for table 'client'
 --
 
-INSERT INTO client (id, fname, mname, lname, sname, city, state, zip, phonenum, email, liencenum) VALUES
-(111111, 'Batman', '', 'DC', '1218 31st Ave.', 'Gotham', 'PI', 78251, '123-456-7820', 'thebats@op.com', '23456'),
-(111222, 'Spiderman', '', 'Marvel', '2025 Broadway Ave.', 'New York', 'NY', 10009, '207-555-2034', 'spider@gmail.com', '13562'),
-(111333, 'Daredevil', '', 'Netflix', '9825 Wall St.', 'New York', 'NY', 10008, '207-425-9825', 'dare@diablo.com', '12463'),
-(111334, 'Aavatr', '', 'Aang', 'Southere Air Temple', 'South', 'Ai', 82235, '760-395-2320', 'aange@saveworld.com', '12456'),
-(111343, 'Aavatr', '', 'Kora', 'Southern Water Tribe', 'South', 'So', 72823, '225-565-789', 'kora@tearbending.com', '127557'),
-(111349, 'Sherlock', '', 'Homes', '1256 Baker St', 'London', 'En', 52563, '760-395-2320', 'sdeduction@homes.com', '562323'),
-(111355, 'John', 'W', 'Wayne', '1246 E. 66th St.', 'New York', 'NY', 42565, '423-456-7893', 'wwayne@gmail.com', '4567824');
 
 -- --------------------------------------------------------
 
@@ -71,10 +66,6 @@ CREATE TABLE IF NOT EXISTS clientcontact (
 -- Dumping data for table 'clientcontact'
 --
 
-INSERT INTO clientcontact (cid, cdate, conformation) VALUES
-(111111, '2017-03-03 05:17:00', 8930),
-(111222, '2017-01-02 22:13:07', 8930),
-(111333, '2017-03-03 13:20:22', 8930);
 
 -- --------------------------------------------------------
 
@@ -93,10 +84,6 @@ CREATE TABLE IF NOT EXISTS completeorder (
 -- Dumping data for table 'completeorder'
 --
 
-INSERT INTO completeorder (oid, cdate, conformation) VALUES
-(111, '2017-03-03 08:20:00', 0),
-(333, '0000-00-00 00:00:00', 0),
-(555, '2017-03-03 14:22:00', 0);
 
 -- --------------------------------------------------------
 
@@ -117,10 +104,6 @@ CREATE TABLE IF NOT EXISTS deliverorder (
 -- Dumping data for table 'deliverorder'
 --
 
-INSERT INTO deliverorder (oid, cid, ddate, conformation) VALUES
-(111, 111111, '2017-03-03 08:50:00', 0),
-(333, 111222, '0000-00-00 00:00:00', 0),
-(555, 111333, '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -142,10 +125,6 @@ CREATE TABLE IF NOT EXISTS digitalorder (
 -- Dumping data for table 'digitalorder'
 --
 
-INSERT INTO digitalorder (oid, pid, removal, biteinfo, surgical) VALUES
-(111, 222111, 'pivital', 'anterio', 'cbct'),
-(333, 222333, 'night guard', 'posterior', 'lab fourm'),
-(555, 222555, 'surgical guide', 'margins', 'impression');
 
 -- --------------------------------------------------------
 
@@ -166,8 +145,6 @@ CREATE TABLE IF NOT EXISTS drose (
 -- Dumping data for table 'drose'
 --
 
-INSERT INTO drose (email, phonenum, sname, city, state, zip) VALUES
-('drose@gmail.com', '575-361-2073', '7520 Montgomery Blvd Building C Sui', 'Albuquerque', 'NM', 87109);
 
 -- --------------------------------------------------------
 
@@ -192,16 +169,6 @@ CREATE TABLE IF NOT EXISTS patient (
 -- Dumping data for table 'patient'
 --
 
-INSERT INTO patient (id, cid, fname, mname, lname, age, gender, phonenum) VALUES
-(222111, 111111, 'The', '', 'Joker', 36, 'M', '123-761-852'),
-(222222, 111111, 'Killer', '', 'Croc', 29, 'M', '123-989-050'),
-(222333, 111222, 'The', '', 'Venom', 25, 'M', '207-006-000'),
-(222444, 111222, 'Mr.', '', 'Lizard', 42, 'M', '207-700-000'),
-(222555, 111333, 'Bull', '', 'Eye', 25, 'M', '207-189-782'),
-(222666, 111333, 'The', '', 'Kingpin', 39, 'M', '207-423-777'),
-(222671, 111343, 'Mako', '', 'Fire', 25, 'M', '258-578-963'),
-(222677, 111349, 'Ceaser', '', 'Salada', 35, 'M', '245-236-276'),
-(222683, 111355, '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -223,15 +190,7 @@ CREATE TABLE IF NOT EXISTS placeorder (
 -- Dumping data for table 'placeorder'
 --
 
-INSERT INTO placeorder (id, cid, odate, ddate, priority) VALUES
-(111, 111111, '2017-03-03 06:18:00', '2017-03-03', 0),
-(222, 111111, '2017-03-03 07:18:00', '2017-03-03', 0),
-(333, 111222, '2017-03-02 23:18:00', '2017-03-03', 0),
-(444, 111222, '2017-03-02 23:42:00', '2017-03-04', 0),
-(555, 111333, '2017-03-03 13:22:00', '2017-03-03', 0),
-(666, 111333, '2017-03-04 06:18:00', '2017-03-06', 0),
-(677, 111355, '2017-05-17 09:42:41', '2017-05-17', 0),
-(678, 111355, '2017-05-20 17:43:05', '2017-05-20', 1);
+
 
 -- --------------------------------------------------------
 
@@ -254,10 +213,6 @@ CREATE TABLE IF NOT EXISTS pvsorder (
 -- Dumping data for table 'pvsorder'
 --
 
-INSERT INTO pvsorder (oid, pid, removables, biteinfo, surgical_guide, additional_info) VALUES
-(222, 222222, 'crown', 'light', 'monolithic', NULL),
-(444, 222444, 'abutment', 'heavy', 'shading', NULL),
-(677, 222683, ' , , , , .', ', , , , .', ', , , .', ', , , , , , , , .');
 
 -- --------------------------------------------------------
 
@@ -275,16 +230,6 @@ CREATE TABLE IF NOT EXISTS receivedorder (
 -- Dumping data for table 'receivedorder'
 --
 
-INSERT INTO receivedorder (oid, rdate) VALUES
-(111, '2017-03-03 06:20:00'),
-(222, '2017-03-03 07:24:00'),
-(333, '2017-03-02 23:20:00'),
-(444, '2017-03-02 23:45:00'),
-(555, '2017-03-03 13:24:00'),
-(666, '2017-03-04 06:20:00'),
-(677, '2017-05-17 09:42:41'),
-(677, '2017-05-20 17:43:05');
-
 -- --------------------------------------------------------
 
 --
@@ -300,15 +245,6 @@ CREATE TABLE IF NOT EXISTS users (
 
 --
 -- Dumping data for table 'users'
---
-
-INSERT INTO users (ID, `user`, `password`) VALUES
-(1, 'user', 'pass1'),
-(2, 'test', 'bmoney'),
-(3, 'admin', 'drose');
-
---
--- Constraints for dumped tables
 --
 
 --
@@ -362,6 +298,86 @@ ALTER TABLE `pvsorder`
 ALTER TABLE `receivedorder`
   ADD CONSTRAINT receivedorder_fk FOREIGN KEY (oid) REFERENCES placeorder (id);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+  
+INSERT INTO drose (email, phonenum, sname, city, state, zip) VALUES
+('drose@gmail.com', '575-361-2073', '7520 Montgomery Blvd Building C Sui', 'Albuquerque', 'NM', 87109);
+
+INSERT INTO client (id, fname, mname, lname, sname, city, state, zip, phonenum, email, liencenum) VALUES
+(111111, 'Batman', '', 'DC', '1218 31st Ave.', 'Gotham', 'PI', 78251, '123-456-7820', 'thebats@op.com', '23456'),
+(111222, 'Spiderman', '', 'Marvel', '2025 Broadway Ave.', 'New York', 'NY', 10009, '207-555-2034', 'spider@gmail.com', '13562'),
+(111333, 'Daredevil', '', 'Netflix', '9825 Wall St.', 'New York', 'NY', 10008, '207-425-9825', 'dare@diablo.com', '12463'),
+(111334, 'Aavatr', '', 'Aang', 'Southere Air Temple', 'South', 'Ai', 82235, '760-395-2320', 'aange@saveworld.com', '12456'),
+(111343, 'Aavatr', '', 'Kora', 'Southern Water Tribe', 'South', 'So', 72823, '225-565-789', 'kora@tearbending.com', '127557'),
+(111349, 'Sherlock', '', 'Homes', '1256 Baker St', 'London', 'En', 52563, '760-395-2320', 'sdeduction@homes.com', '562323'),
+(111355, 'John', 'W', 'Wayne', '1246 E. 66th St.', 'New York', 'NY', 42565, '423-456-7893', 'wwayne@gmail.com', '4567824');
+
+
+INSERT INTO clientcontact (cid, cdate, conformation) VALUES
+(111111, '2017-03-03 05:17:00', 8930),
+(111222, '2017-01-02 22:13:07', 8930),
+(111333, '2017-03-03 13:20:22', 8930);
+
+INSERT INTO patient (id, cid, fname, mname, lname, age, gender, phonenum) VALUES
+(222111, 111111, 'The', '', 'Joker', 36, 'M', '123-761-852'),
+(222222, 111111, 'Killer', '', 'Croc', 29, 'M', '123-989-050'),
+(222333, 111222, 'The', '', 'Venom', 25, 'M', '207-006-000'),
+(222444, 111222, 'Mr.', '', 'Lizard', 42, 'M', '207-700-000'),
+(222555, 111333, 'Bull', '', 'Eye', 25, 'M', '207-189-782'),
+(222666, 111333, 'The', '', 'Kingpin', 39, 'M', '207-423-777'),
+(222671, 111343, 'Mako', '', 'Fire', 25, 'M', '258-578-963'),
+(222677, 111349, 'Ceaser', '', 'Salada', 35, 'M', '245-236-276'),
+(222683, 111355, '', '', '', 0, '', '');
+
+
+INSERT INTO placeorder (id, cid, odate, ddate, priority) VALUES
+(111, 111111, '2017-03-03 06:18:00', '2017-03-03', 0),
+(222, 111111, '2017-03-03 07:18:00', '2017-03-03', 0),
+(333, 111222, '2017-03-02 23:18:00', '2017-03-03', 0),
+(444, 111222, '2017-03-02 23:42:00', '2017-03-04', 0),
+(555, 111333, '2017-03-03 13:22:00', '2017-03-03', 0),
+(666, 111333, '2017-03-04 06:18:00', '2017-03-06', 0),
+(677, 111355, '2017-05-17 09:42:41', '2017-05-17', 0),
+(678, 111355, '2017-05-20 17:43:05', '2017-05-20', 1);
+
+INSERT INTO digitalorder (oid, pid, removal, biteinfo, surgical) VALUES
+(111, 222111, 'pivital', 'anterio', 'cbct'),
+(333, 222333, 'night guard', 'posterior', 'lab fourm'),
+(555, 222555, 'surgical guide', 'margins', 'impression');
+
+
+INSERT INTO pvsorder (oid, pid, removables, biteinfo, surgical_guide, additional_info) VALUES
+(222, 222222, 'crown', 'light', 'monolithic', NULL),
+(444, 222444, 'abutment', 'heavy', 'shading', NULL),
+(677, 222683, ' , , , , .', ', , , , .', ', , , .', ', , , , , , , , .');
+
+INSERT INTO receivedorder (oid, rdate) VALUES
+(111, '2017-03-03 06:20:00'),
+(222, '2017-03-03 07:24:00'),
+(333, '2017-03-02 23:20:00'),
+(444, '2017-03-02 23:45:00'),
+(555, '2017-03-03 13:24:00'),
+(666, '2017-03-04 06:20:00'),
+(677, '2017-05-17 09:42:41'),
+(677, '2017-05-20 17:43:05');
+
+INSERT INTO completeorder (oid, cdate, conformation) VALUES
+(111, '2017-03-03 08:20:00', 0),
+(333, '0000-00-00 00:00:00', 0),
+(555, '2017-03-03 14:22:00', 0);
+
+INSERT INTO deliverorder (oid, cid, ddate, conformation) VALUES
+(111, 111111, '2017-03-03 08:50:00', 0),
+(333, 111222, '0000-00-00 00:00:00', 0),
+(555, 111333, '0000-00-00 00:00:00', 1);
+
+
+INSERT INTO users (ID, `user`, `password`) VALUES
+(1, 'user', 'pass1'),
+(2, 'test', 'bmoney'),
+(3, 'admin', 'drose');
+
+--
+-- Constraints for dumped tables
+--
+

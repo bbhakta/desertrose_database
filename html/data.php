@@ -1,5 +1,6 @@
 <html>
 <div align ="center">
+<<<<<<< HEAD
 
 <?php
 /*
@@ -18,6 +19,9 @@
 	Check if anyof the string containts keywords like select, *, drop remove the string raise error
 
 */
+=======
+<?php
+>>>>>>> 709ca472a95f58928365fd16b7e6640b1bb01cd2
 
 /* http://www.fpdf.org/en/script/script10.php */
 ob_start();
@@ -169,7 +173,8 @@ else {
 //admin information for conneting to mysql and slecet database
 $ahost = 'localhost';
 $auser = 'root';
-$apassword = 'ramkabir';
+//$apassword = 'ramkabir';
+$apassword = '';
 $database = 'desertrose';
 
 $connect =  mysql_connect($ahost, $auser, $apassword) 
