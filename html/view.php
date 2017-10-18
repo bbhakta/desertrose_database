@@ -11,15 +11,13 @@
 
 /* http://www.fpdf.org/en/script/script10.php */
 ob_start();
-//require('fpdf/fpdf.php');
-require('C:\xampp\htdocs\fpdf\fpdf.php');
+require('fpdf/fpdf.php');
 /* Intialize variables for the database */
 /* Need to find a way to hide admin username and password*/
 
 $ahost = 'localhost';
 $auser = 'root';
-//$apassword = 'ramkabir';
-$apassword = '';
+$apassword = 'ramkabir';
 $database = 'desertrose';
 
 /*Connect to the database using varible prints out error message if database is unavalible */
@@ -486,8 +484,7 @@ switch ($_POST['client'])
 		/* Need to create invoice directory so user can select any invoice*/
 		/* TO DO: FIND a way to name invoice so when we get any invoice not just one*/
 		 // The location of the PDF file on the server.
-		//$filename = "/var/www/html/invoice.pdf";
-		$filename = 'C:\xampp\htdocs\html\invoice.pdf';
+		$filename = "/var/www/html/invoice.pdf";
 
 		// Let the browser know that a PDF file is coming.
 		header("Content-type: application/pdf");

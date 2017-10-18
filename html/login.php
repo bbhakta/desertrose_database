@@ -8,8 +8,7 @@ $ipass = $_POST['pass'];
 /* Need to find a way to hide admin username and password*/
 $ahost = 'localhost';
 $auser = 'root';
-//$apassword = 'ramkabir';
-$apassword = '';
+$apassword = 'ramkabir';
 $database = 'desertrose';
 
 /*Connect to the database using varible prints out error message if database is unavalible */
@@ -17,33 +16,46 @@ $connect =  mysql_connect($ahost, $auser, $apassword)
 	 or die('Could not connect:' . mysql_errno());
 
 
-echo "here";
-/*Specifies which daabase to use*/
-mysql_select_db($database, $connect);
+try {
+$conn = new PDO("mysql:host=$ahost;dbname=$database", $auser, $apassword);
 
-/* Mysql query which gets username pas password from the database */
-$query =  "SELECT * FROM `users` WHERE user = '$iuser'";
-$querypass = "SELECT * FROM `users` WHERE  password = '$ipass'";
+// set the PDO error mode to exception
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-/*Executes the query, and if it has problem executing it prints out error message*/
-$result = mysql_query($query) or die('A error occured: '. mysql_error());
-$resultpass = mysql_query($querypass) or die('A error ocurred: ' . mysql_error());
 
-/*This is a way to get data from our database it returns data as array*/
-$row = mysql_fetch_array($result);
-$rowpass = mysql_fetch_array($resultpass);
+if ( !$user_data =  $conn->prepare("SELECT * from users WHERE user = :iuser") )
+	echo "Prepare Error (Selecting usernames): ($conn->errno) $conn->error";
 
-/*Sets the username and password */
-$serveruser = $row["user"];
-$serverpass = $row["password"];
+if ( !$user_data->bindParam(":iuser", $iuser) )
+	echo "Binding Parameter (Username) Error: ($conn->errno) $conn->error";
+
+if ( !$user_data->execute() )
+	echo "Execute Error (Executing username query): ($user_data->errno) $user_data->error";
+
+if ( !$pass_data =  $conn->prepare("SELECT * from users WHERE password = :ipass") )
+	echo "Prepare Error (Selecting password): ($conn->errno) $conn->error";
+
+if ( !$pass_data->bindParam(":ipass", $ipass) )
+	echo "Binding Parameter (password) Error: ($conn->errno) $conn->error";
+
+if ( !$pass_data->execute() )
+	echo "Execute Error (Executing password query): ($pass_data->errno) $pass_data->error";
+
+while($row_user = $user_data->fetch(PDO::FETCH_ASSOC)){
+	$serveruser = $row_user["user"];
+
+}
+
+while($row_pass = $pass_data->fetch(PDO::FETCH_ASSOC)){
+	$serverpass = $row_pass["password"];
+}
+echo $serveruser;
+echo $serverpass;
 
 /* This if blocks checks the  username and password */
 if($serveruser&&$serverpass){
-	if(!$result){
-		die("Username or passwrod is invalid");
-	}
-	echo "<br><center> Database output </b></center><br><br>";
-	mysql_close();
+
+
 /* Check if user is admin if it is admin then it'll redirect to home.php file*/
 	if($ipass == $serverpass && $iuser == $serveruser && $iuser =="admin"){
 		header('Location: home.php');
@@ -54,6 +66,17 @@ if($serveruser&&$serverpass){
 		echo "Sorry bad login";
 		header('Location: fail.php');
 	}
+}
+
+$user_data->close();
+$pass_data->close(); 
+
+} catch (Exception $e) {
+
+echo "Error in connection to database" . $e->getMessage() . "</br>";
+
+die();
+
 }
 //header('Location: fail.php');
 
