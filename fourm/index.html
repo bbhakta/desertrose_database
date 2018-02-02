@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<style>
+
+h1 {
+   color: #ffffff;
+   background-color: #607d8b;
+   font-family: 'Trocchi', serif; 
+   font-size: 48px; 
+   font-weight: normal; 
+   line-height: 43px; 
+   margin: 0;
+   height:auto;
+  width:auto;
+  overflow:visible;
+}
+
+.wrap {
+	height:auto;
+	width:720px;
+	overflow:visible;
+
+}
+
+textarea {
+    width: 50%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+.selectable {
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  grid-gap: 5px;
+  grid-auto-rows: 220px;
+  grid-auto-flow: dense;
+
+}
+img {
+  border: 2px solid black;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+img:hover {
+  box-shadow: 0 0 6px black;
+  transform: scale(1.1);
+  border-color: red;
+  opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+img:active {
+  box-shadow: 0 0 6px blue;
+  border-color: red;
+
+}
+
+	
+
+	#tsplint{
+		display: none;
+	}
+
+	#splint {
+	    display: none;
+	}
+
+	#button{
+		 display: none;
+	}
+
+	#splint:not(:checked)~ #tsplint{
+	  display: none;
+	}
+
+	#splint:checked + label > img{
+	    border-color: red;
+	    opacity: 1.0;
+	    filter: alpha(opacity=100);
+	}
+
+	#splint:checked  ~#tsplint{
+
+	    display: block;
+	    display:table-cell;
+	    vertical-align:right;
+		text-align:left;
+		position: absolute;
+		top: 140px;
+		right: -10px;
+		bottom:50px;
+	}
+
+
+	#tcrown{
+		display: none;
+	}
+
+	#crown {
+	    display: none;
+	}
+
+	#crown:not(:checked)~ #tcrown{
+	  display: none;
+	}
+
+	#crown:checked + label > img{
+	    border-color: red;
+	    opacity: 1.0;
+	    filter: alpha(opacity=100);
+	}
+
+	#crown:checked ~#tcrown{
+	    display: block;
+	    display:table-cell;
+	    vertical-align:right;
+		text-align:left;
+		position: absolute;
+		top: 140px;
+		right: 55px;
+		bottom:50px;
+	}
+
+
+	#tdenture{
+		display: none;
+	}
+	#denture {
+	    display: none;
+	}
+
+	#denture:not(:checked)~ #tdenture{
+	  display: none;
+	}
+
+	#denture:checked + label > img{
+	    border-color: red;
+	    opacity: 1.0;
+	    filter: alpha(opacity=100);
+	}
+
+	#denture:checked ~#tdenture{
+	display: block;
+	    display:table-cell;
+	    vertical-align:right;
+		text-align:left;
+		position: absolute;
+		top: 140px;
+		right: 10px;
+		bottom:50px;
+	}
+
+
+	#tsurgical{
+		display: none;
+	}
+	#surgical{
+	    display: none;
+	}
+
+	#surgical:not(:checked)~ #tsurgical{
+	  display: none;
+	}
+
+	#surgical:checked + label > img{
+	    border-color: red;
+	    opacity: 1.0;
+	    filter: alpha(opacity=100);
+	}
+
+	#surgical:checked ~#tsurgical{
+	display: block;
+	    display:table-cell;
+	    vertical-align:right;
+		text-align:left;
+		position: absolute;
+		top: 140px;
+		right: 10px;
+		bottom:50px;
+	}
+
+
+	#tdmodel{
+		display: none;
+	}
+	#dmodel{
+	    display: none;
+	}
+
+	#dmodel:not(:checked)~ #tdmodel{
+	  display: none;
+	}
+
+	#dmodel:checked + label > img{
+	    border-color: red;
+	    opacity: 1.0;
+	    filter: alpha(opacity=100);
+	}
+
+	#dmodel:checked ~#tdmodel{
+	display: block;
+	    display:table-cell;
+	    vertical-align:right;
+		text-align:left;
+		position: absolute;
+		top: 140px;
+		right: 10px;
+		bottom:50px;
+	}
+
+
+	#tques{
+		display: none;
+	}
+
+	#file{
+		display: none;
+	}
+	#ques{
+	    display: none;
+	}
+
+	#ques:not(:checked)~ #tques{
+	  display: none;
+	}
+
+	#ques:not(:checked)~ #file{
+	  display: none;
+	}
+
+
+	#ques:checked + label > img{
+	    border-color: red;
+	    opacity: 1.0;
+	    filter: alpha(opacity=100);
+	}
+
+	#ques:checked ~#tques{
+	display: block;
+	    display:table-cell;
+	    vertical-align:right;
+		text-align:left;
+		position: absolute;
+		top: 140px;
+		right: 10px;
+		bottom:50px;
+	}
+
+	#ques:checked ~#file{
+	display: block;
+	}
+
+		#data{
+			display: none;
+			
+		}
+
+		#csplint{
+			display: none;
+			
+		    vertical-align:left;
+			text-align:left;
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			bottom:50px;
+		}
+		
+
+		#ccrown{
+			display: none;
+			
+		    vertical-align:left;
+			text-align:left;
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			bottom:50px;
+		}
+
+			
+		#cdenture{
+			display: none;
+			
+		    vertical-align:left;
+			text-align:left;
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			bottom:50px;
+		}
+
+		#csurgical{
+			display: none;
+			
+		    vertical-align:left;
+			text-align:left;
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			bottom:50px;
+		}
+
+
+		#cdmodel{
+			display: none;
+			
+		    vertical-align:left;
+			text-align:left;
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			bottom:50px;
+		}
+
+
+		#cques{
+			display: none;
+			
+		    vertical-align:left;
+			text-align:left;
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			bottom:50px;
+		}
+		
+
+		.form-style-1 {
+		    margin:10px auto;
+		    max-width: 400px;
+		    padding: 20px 12px 10px 20px;
+		    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		}
+
+		.form-style-1 li {
+		    padding: 0;
+		    display: block;
+		    list-style: none;
+		    margin: 10px 0 0 0;
+		}
+
+		.form-style-1 label{
+		    margin:0 0 3px 0;
+		    padding:0px;
+		    display:block;
+		    font-weight: bold;
+		}
+
+		.fname {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .fname {
+		    display:inline-block;
+		}
+
+		.lname {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .lname {
+		    display:inline-block;
+		}
+
+		.email {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .email {
+		    display:inline-block;
+		}
+
+		.phone {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .phone {
+		    display:inline-block;
+		}
+		.street {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .street {
+		    display:inline-block;
+		}
+
+		.city {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .city {
+		    display:inline-block;
+		}
+
+		.state {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .state {
+		    display:inline-block;
+		}
+
+		.zip {
+		    display:none;
+		    font-size:90%;
+		}
+		input:focus + .zip {
+		    display:inline-block;
+		}
+
+		.form-style-1 input[type=text],
+		.form-style-1 input[type=date],
+		.form-style-1 input[type=datetime],
+		.form-style-1 input[type=number],
+		.form-style-1 input[type=search],
+		.form-style-1 input[type=time],
+		.form-style-1 input[type=url],
+		.form-style-1 input[type=email],
+		textarea,
+
+		select{
+		    box-sizing: border-box;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    border:1px solid #BEBEBE;
+		    padding: 7px;
+		    margin:0px;
+		    -webkit-transition: all 0.30s ease-in-out;
+		    -moz-transition: all 0.30s ease-in-out;
+		    -ms-transition: all 0.30s ease-in-out;
+		    -o-transition: all 0.30s ease-in-out;
+		    outline: none;
+		}
+
+		.form-style-1 input[type=text]:focus,
+		.form-style-1 input[type=date]:focus,
+		.form-style-1 input[type=datetime]:focus,
+		.form-style-1 input[type=number]:focus,
+		.form-style-1 input[type=search]:focus,
+		.form-style-1 input[type=time]:focus,
+		.form-style-1 input[type=url]:focus,
+		.form-style-1 input[type=email]:focus,
+		.form-style-1 textarea:focus,
+
+		.form-style-1 select:focus{
+		    -moz-box-shadow: 0 0 8px #88D5E9;
+		    -webkit-box-shadow: 0 0 8px #88D5E9;
+		    box-shadow: 0 0 8px #88D5E9;
+		    border: 1px solid #88D5E9;
+		}
+
+		.form-style-1 .field-divided{
+		    width: 49%;
+		}
+
+		.form-style-1 .field-long{
+		    width: 100%;
+		}
+		.form-style-1 .field-select{
+		    width: 100%;
+		}
+		.form-style-1 .field-textarea{
+		    height: 100px;
+		}
+
+		.form-style-1 input[type=submit], .form-style-1 input[type=button]{
+		    background: #4B99AD;
+		    padding: 8px 15px 8px 15px;
+		    border: none;
+		    color: #fff;
+		}
+
+		.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+		    background: #4691A4;
+		    box-shadow:none;
+		    -moz-box-shadow:none;
+		    -webkit-box-shadow:none;
+		}
+
+		.form-style-1 .required{
+		    color:red;
+		}
+
+</style>
+
+<head>
+
+<title>Request a Free Sample</title>
+
+<script>
+
+  function showhide(show_name, hide_name)
+  {
+  	var show_div = document.getElementById(show_name);
+  	var hide_div = document.getElementById(hide_name);
+    
+    if (show_div.style.display !== "none" && hide_div.style.display == "block") 
+    {
+        show_div.style.display = "block";
+        hide_div.style.display = "none";
+    }
+
+    else 
+    {
+        show_div.style.display = "none";
+        hide_div.style.display = "block";
+    }
+  }
+
+    
+</script>
+
+
+</head>
+
+<body>
+
+<div id="choice" >
+
+	<div class="wrap">
+
+	    <h1> Request a Free Sample</h1>
+
+	    <p>
+	      Complete the form, and we'll ship you a sample part 3D printed on 3D printer.
+	      The sample part will help you visualize what you can create with a Form 2.
+	      Explore the materials to discover the one that fits your needs
+	    </p>
+
+	</div>
+<form action="amazon-ses-smtp-sample.php" method="post" enctype="multipart/form-data"
+    data-fv-framework="bootstrap"
+    data-fv-icon-valid="glyphicon glyphicon-ok"
+    data-fv-icon-invalid="glyphicon glyphicon-remove"
+    data-fv-icon-validating="glyphicon glyphicon-refresh">
+
+<div class="selectable" id = "cBoxInfo">
+
+	<input type="checkbox" class ="chboxval" id="splint" name="splint" value="splint"/>
+
+	<label  for="splint" >
+
+		<img src="splint_1.jpg"  width="220" height="220"  value= "splint "alt = ""/>
+	 
+	</label>
+
+		<div id= "tsplint" dir="ltr">
+		
+			<p><b>Splint</b></p>
+	        <ul>
+	        <li><a>Semi-flexible, Class 2</a></li>
+	        <li><a>Clear/Black/Red/Blue (Prototyping)</a></li>
+	        <li><a>Custom made experimental design</a></li>
+	        </ul>
+
+	  	</div>
+
+	  	
+	<input type="checkbox" class ="chboxval" id="crown" name="crown" value="crown"/>
+
+	<label  for="crown"> 
+
+		<img src="crown_1.jpg" width="220" height="220" alt = ""/>
+
+	</label>
+
+	  	<div id="tcrown" dir="ltr">
+	  		<p><b>Crown</b></p>
+	        <ul>
+	        <li><a>15 micron tolerance</a></li>
+	        <li><a>classic vita shades</a></li>
+	        <li><a>300 MPa</a></li>
+	        <li><a>FDA Class 2</a></li>
+	        <li><a>Potentially free</a></li>
+	        </ul>
+		</div>
+ 
+
+	<input type="checkbox" class ="chboxval" id="denture" name="denture" value="denture"/>
+
+	<label  for="denture">
+	  
+	  <img src="denture_1.jpg" width="220" height="220" alt = ""/>
+
+	</label>
+
+		<div id="tdenture" dir="ltr">
+
+			<p><b>Denture</b></p>
+	        <ul>
+	        <li><a>15 micron tolerance</a></li>
+	        <li><a>aimed towards low income patients</a></li>
+	        <li><a>single appointment impression based</a></li>
+	        <li><a>digitally designed (includes data storage)</a></li>
+	        <li><a>effortless to reproduce</a></li>
+	      	</ul>
+
+	    </div>
+
+	<input type="checkbox" class ="chboxval" id="surgical" name="surgical" value="surgical"/>
+
+	<label  for="surgical">
+
+	 	<img src="surgical_1.jpg" width="220" height="220" alt = ""/>
+
+	</label>
+
+		<div id="tsurgical" dir = "ltr">
+			<p><b>Surgical</b></p>
+		      <ul>
+		      <li><a>Sterilization indicator</a></li>
+		      <li><a>50 micron tolerance</a></li>
+		      <li><a>single tooth or edentulous guide</a></li>
+		      <li><a>FDA Class 1</a></li>
+		    </ul>
+		</div>
+
+<input type="checkbox" class ="chboxval" id="dmodel" name="dmodel" value="dmodel"/>
+
+<label  for="dmodel">
+
+  <img src="dmodel_1.jpg" width="220" height="220" alt = ""/>
+
+ </label>
+
+ <div id="tdmodel" dir ="ltr">
+ <p><b>D Model</b></p>
+          <ul>
+          <li><a>Patient interactive</a></li>
+          <li><a>Educationa</a></li>
+          <li><a>Decorative</a></li>
+        </ul>
+       </div>
+
+<input type="checkbox" class ="chboxval" id="ques" name="ques" value="ques"/>
+
+<label  for="ques">  
+
+  <img src="question.jpg" width="220" height="220" alt = ""/>
+
+</label>
+
+<div id="tques" dir ="ltr">
+<p><b>Own Design</b></p>
+          <ul>
+          <li><a>Your Own Design</a></li>
+          <li><a>Should be .STL File</a></li>
+          <li><a>15 MB size limit</a></li> 
+        </ul>
+</div>
+
+	<div id ="file">
+	
+	     <input class="upload-file" name="userstl"data-max-size="2048" type="file" accept=".stl"/>
+    </div>
+  
+</div>
+
+
+<button id="button" onclick="showhide('choice', 'data'); myFunction();return false;"> Enter Information </button>
+
+
+</div>
+
+<script type="text/javascript">
+(function() {
+button.style.display="none";
+var chkdOne;
+
+var cBoxInfo = document.getElementById('cBoxInfo').getElementsByTagName('input');
+
+  for (var i=0; i<cBoxInfo.length; i++) {
+
+    cBoxInfo[i].onclick = function(){
+    	
+  if (chkdOne){chkdOne.checked=false;button.style.display="none"}
+  chkdOne=this; 
+
+if (i>=1) {button.style.display="block"};
+
+	
+      }
+
+    }
+
+  
+  })();
+
+</script>
+
+
+<div id="data" name="data">
+
+
+<script>
+function myFunction() {
+
+var checkedValue = null;
+var inputElements = document.getElementsByClassName("chboxval");
+    for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           checkedValue = inputElements[i].value;
+           break;
+      }
+
+	}
+               
+    switch (checkedValue)
+    {
+       case 'splint': csplint.style.display ="block";
+       
+       break;
+    
+       case 'crown': ccrown.style.display ="block";
+       break;
+    
+       case 'denture': cdenture.style.display ="block";
+       break;
+    
+       case 'surgical': csurgical.style.display ="block";
+       break;
+    
+       case 'dmodel': cdmodel.style.display ="block";
+       break;
+
+       case 'ques': cques.style.display ="block";
+       break;
+    
+       default:  
+    }   
+}
+</script>
+
+<div id= "csplint" dir="ltr">
+
+<img src="splint_1.jpg"  width="120" height="120" style="opacity: 1.0;
+    filter: alpha(opacity=100);border-color: red;" alt = ""/>
+ 
+	<p><b>Splint</b></p>
+        <ul>
+        <li><a>Semi-flexible, Class 2</a></li>
+        <li><a>Clear/Black/Red/Blue (Prototyping)</a></li>
+        <li><a>Custom made experimental design</a></li>
+        </ul>
+        
+</div>
+
+
+<div id="ccrown" dir="ltr">
+
+<img src="crown_1.jpg" width="120" height="120" style="opacity: 1.0;
+    filter: alpha(opacity=100);border-color: red;" alt = ""/>
+
+
+  <p><b>Crown</b></p>
+          <ul>
+
+          <li><a>15 micron tolerance</a></li>
+          <li><a>classic vita shades</a></li>
+          <li><a>300 MPa</a></li>
+          <li><a>FDA Class 2</a></li>
+          <li><a>Potentially free</a></li>
+
+        </ul>
+        
+</div>
+
+ 
+
+<div id="cdenture" dir="ltr"> 
+
+
+<img src="denture_1.jpg" width="120" height="120" style="opacity: 1.0;
+    filter: alpha(opacity=100);border-color: red;" alt = ""/>
+
+
+<p><b>Denture</b></p>
+        <ul>
+
+        <li><a>15 micron tolerance</a></li>
+        <li><a>aimed towards low income patients</a></li>
+        <li><a>single appointment impression based</a></li>
+        <li><a>digitally designed (includes data storage)</a></li>
+        <li><a>effortless to reproduce</a></li>
+      </ul>
+      
+
+</div>
+
+<div id="csurgical" dir = "ltr">
+
+<img src="surgical_1.jpg" width="120" height="120" style="opacity: 1.0;
+    filter: alpha(opacity=100);border-color: red;" alt = ""/>
+
+
+<p><b>Surgical</b></p>
+          <ul>
+
+          <li><a>Sterilization indicator</a></li>
+          <li><a>50 micron tolerance</a></li>
+          <li><a>single tooth or edentulous guide</a></li>
+          <li><a>FDA Class 1</a></li>
+        </ul>
+        
+</div>
+
+
+<div id="cdmodel" dir ="ltr">
+<img src="dmodel_1.jpg" width="120" height="120" style="opacity: 1.0;
+    filter: alpha(opacity=100);border-color: red;" alt = ""/>
+
+ <p><b>D Model</b></p>
+          <ul>
+          <li><a>Patient interactive</a></li>
+          <li><a>Educationa</a></li>
+          <li><a>Decorative</a></li>
+        </ul>
+        
+</div>
+
+
+<div id="cques" dir ="ltr">
+<img src="question.jpg" width="120" height="120" style="opacity: 1.0;
+    filter: alpha(opacity=100);border-color: red;" alt = ""/>
+
+<p><b>Own Design</b></p>
+          <ul>
+          <li><a>Your Own Design</a></li>
+          <li><a>Should be .STL File</a></li>
+          <li><a>15 MB size limit</a></li> 
+        </ul>
+        
+</div>
+
+
+
+<ul class="form-style-1">
+
+	    <li>
+				<label>Full Name <span class="required">*</span></label>
+
+				<input type="text" name="field1" class="field-divided" required
+           pattern="[A-Za-z]*"placeholder="First" aria-describedby="name-format" required/>
+           <span id="name-format" class="fname">Format: Firstname </span>&nbsp;
+				
+				<input type="text" name="field2" class="field-divided" required
+           pattern="[A-Za-z]*"placeholder="Last" aria-describedby="name-format" required/>
+           <span id="name-format" class="lname">Format: Lastname </span>
+			</li>
+			
+	    <li>
+
+	        <label>Email <span class="required">*</span></label>
+	        <input type="email" name="field3" class="field-divided"
+			 placeholder="desertroselabs@gmail.com" required/>
+			  <span id="name-format" class="email">Format: desertroselabs@gmail.com </span>&nbsp;
+
+					<label>Phoenumber <span class="required">*</span></label>
+	        <input type="telephone" name="field9" class="field-divided" required
+           pattern="[0-9]{3}[ -][0-9]{3}[ -][0-9]{4}"
+					placeholder="575-322-0385" required/>
+					<span id="name-format" class="phone">Format: 575-322-03385 </span>
+
+
+
+	    </li>
+
+			<li>
+				<label>Address<span class="required">*</span></label>
+				<input type="text" name="field4" class="field-divided" placeholder="Street" required/>
+				<span id="name-format" class="street">Format: 7520 Montgomery Blvd NE c </span>&nbsp;
+				<input type="text" name="field5" class="field-divided" placeholder="City" required
+           pattern="(?:[A-Z][a-z.-]+[ ]?)+" required/>
+           		<span id="name-format" class="city">Format: Albuquerque </span>&nbsp;
+				<input type="text" name="field6" class="field-divided" placeholder="State(NM)" 
+				required
+           pattern="AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT
+|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY" required/>
+			<span id="name-format" class="state">Format: NM </span>
+				<input type="text" name="field7" class="field-divided" placeholder="Zipcode" required
+           pattern="\b\d{5}(?:-\d{4})?\b" required/>
+           <span id="name-format" class="zip">Format: 87109 </span>
+			</li>
+				
+			<li>
+				<label>Profession <span class="required">*</span></label>
+				<input type="text" name="field8" class="field-divided" placeholder="Profession" required
+				pattern="[A-Za-z]*"/>
+				<span id="name-format" class="zip">Format: Doctor, Student,.. </span>
+
+	    <li>
+	        <label>Interested<span class="required">*</span></label>
+	        <select name="field10" class="field-select" required>
+	        <option required value="Advertise">Scanning</option>
+	        <option required value="Partnership">Designing</option>
+	        <option required value="General Question">Printing</option>
+	        <option required value="Partnership">Outsourcing</option>
+	        <option required value="General Question">Prototyping</option>
+	        </select>
+	    </li>
+	    	
+
+	    <li>
+	        <label>Your Message <span class="required">*</span></label>
+	        <textarea name="field8" id="field11" class="field-long field-textarea" placeholder="Tell us why did you placed order"required></textarea>
+	    </li>
+
+	    <li>
+	        <input type="submit" name="submit" value="Submit" />
+
+	    </li>
+	</ul>
+	</div>
+
+</form>
+</body>
+
+</html>
